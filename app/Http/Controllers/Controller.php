@@ -9,12 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    /**
-     * @OA\Info(
-     *      title="Cobuccio Securitizadora API",
-     *      version="0.1"
-     * )
-     */
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected $service;
     public function __construct($service = null)

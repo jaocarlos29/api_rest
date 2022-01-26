@@ -9,13 +9,15 @@ use Illuminate\Support\Facades\Schema;
 use App\Repositories\Contracts\{
     UsuarioRepositoryInterface,
     AbstractRepositoryInterface,
-    PlantaRepositoryInterface
+    PlantaRepositoryInterface,
+    TalhaoRepositoryInterface
 };
 
 use App\Repositories\{
     UsuarioRepository,
     AbstractRepository,
-    PlantaRepository
+    PlantaRepository,
+    TalhaoRepository
 };
 
 class AppServiceProvider extends ServiceProvider
@@ -42,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
             PlantaRepository::class
         );
 
+        $this->app->bind(
+            TalhaoRepositoryInterface::class,
+            TalhaoRepository::class
+        );
     }
 
     /**
