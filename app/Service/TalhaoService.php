@@ -21,12 +21,18 @@ class TalhaoService
 
     public function index()
     {
-        return $this->talhao_repository->all();
+        $talhao = $this->talhao_repository->all();
+        $talhao->map(function ($talhaos) {
+            return $talhaos->TalhaoUsuario;
+        });
+
+        return $talhao;
     }
 
     public function show($id)
     {
         $talhao =  $this->talhao_repository->find($id);
+        $talhao->TalhaoUsuario;
         return $talhao;
     }
 

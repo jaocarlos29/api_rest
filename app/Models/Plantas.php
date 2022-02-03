@@ -24,6 +24,6 @@ class Plantas extends Model
 
     public function plantaTalhao()
     {
-        return $this->belongsTo(Talhao::class, 'id');
+        return $this->belongsTo(Talhao::class, 'talhao_id');
     }
 }

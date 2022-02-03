@@ -12,38 +12,43 @@ use Illuminate\Support\Facades\Hash;
 class PlantaService
 {
 
-  protected $planta_repository;
+    protected $planta_repository;
 
-  public function __construct(PlantaRepositoryInterface $planta_repository)
-  {
-    $this->planta_repository = $planta_repository;
-  }
+    public function __construct(PlantaRepositoryInterface $planta_repository)
+    {
+        $this->planta_repository = $planta_repository;
+    }
 
-  public function index()
-  {
-    return $this->planta_repository->all();
-  }
+    public function index()
+    {
+        $planta = $this->planta_repository->all();
+        $planta->map(function ($plantas) {
+            return $plantas->plantaTalhao;
+        });
 
-  public function show($id)
-  {
-    $planta =  $this->planta_repository->find($id);
-    return $planta;
-  }
+        return $planta;
+    }
 
-  public function create($data)
-  {
-    return $this->planta_repository->create($data);
-  }
+    public function show($id)
+    {
+        $planta =  $this->planta_repository->find($id);
+        $planta->plantaTalhao;
+        return $planta;
+    }
 
-  public function update($id, $data)
-  {
-    return $this->planta_repository->update($id, $data);
-  }
+    public function create($data)
+    {
+        return $this->planta_repository->create($data);
+    }
+
+    public function update($id, $data)
+    {
+        return $this->planta_repository->update($id, $data);
+    }
 
 
-  public function delete($id)
-  {
-    return $this->planta_repository->delete($id);
-  }
-
+    public function delete($id)
+    {
+        return $this->planta_repository->delete($id);
+    }
 }

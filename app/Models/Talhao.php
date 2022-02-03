@@ -19,12 +19,8 @@ class Talhao extends Model
 
     public function TalhaoUsuario()
     {
-        return $this->belongsTo(Usuarios::class, 'id');
+        return $this->belongsTo(Usuarios::class, 'usuario_id');
     }
 
-    public function plantaTalhao()
-    {
-        return $this->hasMany(Plantas::class, 'id');
-    }
 
 }
